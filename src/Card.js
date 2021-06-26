@@ -1,14 +1,23 @@
+import { useState } from 'react';
 import './Card.css';
 
 export default function Card(props) {
+  const [didCopy, setDidCopy] = useState(false);
+
   return (
     <a
-      href='javascript:void(0);'
-      onClick={() => {
+      href='#'
+      onClick={(e) => {
+        e.preventDefault();
         navigator.clipboard.writeText(props.color);
+        setDidCopy(true);
+        setTimeout(() => {
+          setDidCopy(false);
+        }, 1000);
       }}
       style={{ textDecoration: 'none', color: 'inherit' }}
     >
+      {didCopy && <Copy />}
       <div className='card'>
         <Square color={props.color} />
         <Label color={props.color} />
@@ -32,5 +41,24 @@ function Label(props) {
       <br />
       {props.color}
     </p>
+  );
+}
+
+function Copy() {
+  return (
+    <div className='copy'>
+      <p
+        style={{
+          color: 'white',
+          fontWeight: 'bold',
+          fontSize: '12px',
+          textAlign: 'center',
+          marginTop: 5,
+        }}
+      >
+        Copied!
+      </p>
+      <div className='triangle'></div>
+    </div>
   );
 }
