@@ -13,9 +13,10 @@ const App = () => {
     return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
   }
 
-  for (let i = 0; i < 256; i += 51) {
-    for (let j = 0; j < 256; j += 51) {
-      for (let k = 0; k < 256; k += 51) {
+  const inc = 51;
+  for (let i = 0; i < 256; i += inc) {
+    for (let j = 0; j < 256; j += inc) {
+      for (let k = 0; k < 256; k += inc) {
         const hexColor = rgbToHex(i, j, k);
         components.push(
           <Card key={`${i}${j}${k}`} color={hexColor.toUpperCase()} />

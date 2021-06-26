@@ -27,7 +27,7 @@
   padding-left: 13px;
 }
 
-.copy {
+.copyPopup {
   width: 75px;
   height: 25px;
   background-color: black;
@@ -35,6 +35,14 @@
   position: absolute;
   margin-left: 37.5px;
   animation: animate-up-keyframes 1s;
+}
+
+.copyText {
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 5px;
 }
 
 .triangle {

@@ -17,7 +17,7 @@ export default function Card(props) {
       }}
       style={{ textDecoration: 'none', color: 'inherit' }}
     >
-      {didCopy && <Copy />}
+      {didCopy && <CopyPopup />}
       <div className='card'>
         <Square color={props.color} />
         <Label color={props.color} />
@@ -44,20 +44,10 @@ function Label(props) {
   );
 }
 
-function Copy() {
+function CopyPopup() {
   return (
-    <div className='copy'>
-      <p
-        style={{
-          color: 'white',
-          fontWeight: 'bold',
-          fontSize: '12px',
-          textAlign: 'center',
-          marginTop: 5,
-        }}
-      >
-        Copied!
-      </p>
+    <div className='copyPopup'>
+      <p className='copyText'>Copied!</p>
       <div className='triangle'></div>
     </div>
   );
