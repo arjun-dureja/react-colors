@@ -4,6 +4,11 @@
   border-radius: 8px;
   background-color: #e0e0e0;
   box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+  transition: 150ms;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .square {

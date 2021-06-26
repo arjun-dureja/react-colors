@@ -2,10 +2,18 @@ import './Card.css';
 
 export default function Card(props) {
   return (
-    <div className='card'>
-      <Square color={`rgb(${props.r}, ${props.g}, ${props.b})`} />
-      <Label r={props.r} g={props.g} b={props.b} />
-    </div>
+    <a
+      href='javascript:void(0);'
+      onClick={() => {
+        navigator.clipboard.writeText(props.color);
+      }}
+      style={{ textDecoration: 'none', color: 'inherit' }}
+    >
+      <div className='card'>
+        <Square color={props.color} />
+        <Label color={props.color} />
+      </div>
+    </a>
   );
 }
 
@@ -17,21 +25,12 @@ function Square(props) {
 
 function Label(props) {
   const ntc = window.ntc;
-  function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length === 1 ? '0' + hex : hex;
-  }
 
-  function rgbToHex(r, g, b) {
-    return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
-  }
-
-  const hexColor = rgbToHex(props.r, props.g, props.b);
   return (
     <p className='label'>
-      {ntc.name(hexColor)[1]}
+      {ntc.name(props.color)[1]}
       <br />
-      {hexColor.toUpperCase()}
+      {props.color}
     </p>
   );
 }
