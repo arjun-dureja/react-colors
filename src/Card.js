@@ -6,7 +6,7 @@ export default function Card(props) {
 
   return (
     <a
-      href='#'
+      href='/#'
       onClick={(e) => {
         e.preventDefault();
         navigator.clipboard.writeText(props.color);
