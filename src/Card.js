@@ -20,7 +20,7 @@ export default function Card(props) {
       {didCopy && <CopyPopup />}
       <div className='card'>
         <Square color={props.color} />
-        <Label color={props.color} />
+        <Label color={props.color} name={props.name} />
       </div>
     </a>
   );
@@ -33,11 +33,9 @@ function Square(props) {
 }
 
 function Label(props) {
-  const ntc = window.ntc;
-
   return (
     <p className='label'>
-      {ntc.name(props.color)[1]}
+      {props.name}
       <br />
       {props.color}
     </p>
