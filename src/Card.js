@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './Card.css';
 
-export default function Card(props) {
-  const [didCopy, setDidCopy] = useState(false);
+const Card = (props) => {
+  const [didClick, setDidClick] = useState(false);
 
   return (
     <a
@@ -10,29 +10,29 @@ export default function Card(props) {
       onClick={(e) => {
         e.preventDefault();
         navigator.clipboard.writeText(props.color);
-        setDidCopy(true);
+        setDidClick(true);
         setTimeout(() => {
-          setDidCopy(false);
+          setDidClick(false);
         }, 1000);
       }}
       style={{ textDecoration: 'none', color: 'inherit' }}
     >
-      {didCopy && <CopyPopup />}
+      {didClick && <CopyPopup />}
       <div className='card'>
         <Square color={props.color} />
         <Label color={props.color} name={props.name} />
       </div>
     </a>
   );
-}
+};
 
-function Square(props) {
+const Square = (props) => {
   return (
     <div style={{ backgroundColor: props.color }} className='square'></div>
   );
-}
+};
 
-function Label(props) {
+const Label = (props) => {
   return (
     <p className='label'>
       {props.name}
@@ -40,13 +40,15 @@ function Label(props) {
       {props.color}
     </p>
   );
-}
+};
 
-function CopyPopup() {
+const CopyPopup = () => {
   return (
     <div className='copyPopup'>
       <p className='copyText'>Copied!</p>
       <div className='triangle'></div>
     </div>
   );
-}
+};
+
+export default Card;
